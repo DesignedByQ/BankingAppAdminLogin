@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class AdminDTO {
 	
-	private Long idAdminDTO;
+	private Long idAdmin;
 	private AuthUserDTO authUserDTO;
 	private String firstName;
 	private String middleName;
@@ -18,10 +18,10 @@ public class AdminDTO {
 		super();
 	}
 
-	public AdminDTO(Long idAdminDTO, AuthUserDTO authUserDTO, String firstName, String middleName, String lastName,
+	public AdminDTO(Long idAdmin, AuthUserDTO authUserDTO, String firstName, String middleName, String lastName,
 			Long mobile, String email, AddressDTO addressDTO, LocalDate staffSince) {
 		super();
-		this.idAdminDTO = idAdminDTO;
+		this.idAdmin = idAdmin;
 		this.authUserDTO = authUserDTO;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -32,12 +32,12 @@ public class AdminDTO {
 		this.staffSince = staffSince;
 	}
 
-	public Long getIdAdminDTO() {
-		return idAdminDTO;
+	public Long getIdAdmin() {
+		return idAdmin;
 	}
 
-	public void setIdAdminDTO(Long idAdminDTO) {
-		this.idAdminDTO = idAdminDTO;
+	public void setIdAdmin(Long idAdmin) {
+		this.idAdmin = idAdmin;
 	}
 
 	public AuthUserDTO getAuthUserDTO() {
@@ -106,9 +106,9 @@ public class AdminDTO {
 
 	@Override
 	public String toString() {
-		return "AdminDTO [idAdminDTO=" + idAdminDTO + ", authUserDTO=" + authUserDTO + ", firstName=" + firstName
+		return "AdminDTO [idAdmin=" + idAdmin + ", authUserDTO=" + authUserDTO + ", firstName=" + firstName
 				+ ", middleName=" + middleName + ", lastName=" + lastName + ", mobile=" + mobile + ", email=" + email
 				+ ", addressDTO=" + addressDTO + ", staffSince=" + staffSince + "]";
 	}
-
+	
 }
