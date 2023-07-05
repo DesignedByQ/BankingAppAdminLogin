@@ -1,5 +1,6 @@
 package com.techprj.registration.admin.api;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.MessagingException;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techprj.registration.admin.dto.AdminDTO;
+import com.techprj.registration.admin.dto.LoginLogDTO;
 import com.techprj.registration.admin.service.DAOServiceImpl;
 import com.techprj.registration.admin.service.EmailService;
 import com.techprj.registration.admin.service.TwoFACodeService;
@@ -80,12 +82,17 @@ public class ControllerAPI {
 		
 		if(isValid) {
 			//create function that makes entry into log table
-			//intServiceDAOImpl.createLog(emailid);
+			daoServiceImpl.createLog(emailid);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		
 		return new ResponseEntity<>(HttpStatus.FORBIDDEN);	
 		
+	}
+	
+	@GetMapping(value="/getlog/{email}", consumes = {MediaType.ALL_VALUE}, produces = {"application/json", "application/xml"})
+	public ResponseEntity<List<LoginLogDTO>> getLog(@PathVariable("email") String email) {
+		return ResponseEntity.status(HttpStatus.OK).body(daoServiceImpl.getLog(email));
 	}
 
 }
