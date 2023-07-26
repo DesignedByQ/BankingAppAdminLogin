@@ -29,6 +29,7 @@ import com.techprj.registration.admin.dto.LoginLogDTO;
 import com.techprj.registration.admin.entity.Address;
 import com.techprj.registration.admin.entity.Admin;
 import com.techprj.registration.admin.entity.AuthUser;
+import com.techprj.registration.admin.repo.AddressRepo;
 import com.techprj.registration.admin.repo.AdminRepo;
 import com.techprj.registration.admin.repo.LoginLogRepo;
 
@@ -43,14 +44,27 @@ public class DAOServiceImpl implements DAOService {
 	
 	@Autowired
 	LoginLogRepo loginLogRepo;
+	
+	@Autowired
+	AddressRepo addressRepo;
 
 	@Override
 	public AdminDTO addAdmin(AdminDTO adminDTO) {
+		
+//		Admin admin = new Admin();
+//		
+//		Address address = new Address();
+//		
+//		adminRepo.save(admin);
+//		
+//		address.setAdmin(admin);
+//		
+//		addressRepo.save(address);
 
 		adminDTO.setStaffSince(LocalDate.now());
 		
 		Admin a = adminRepo.save(modelMapper.map(adminDTO, Admin.class));
-		
+				
 		AuthUserDTO audto = modelMapper.map(a.getAuthUser(), AuthUserDTO.class);
 		AddressDTO adddto = modelMapper.map(a.getAddress(), AddressDTO.class);
 		

@@ -3,7 +3,7 @@ package com.techprj.registration.admin.dto;
 public class AuthUserDTO {
 	
 	private Long idAuthUser;
-	private String username;
+	private String jobRole;
 	private String password;
 	private Boolean isSuperuser;
 	private Boolean isStaff;
@@ -14,11 +14,11 @@ public class AuthUserDTO {
 		super();
 	}
 
-	public AuthUserDTO(Long idAuthUser, String username, String password, Boolean isSuperuser, Boolean isStaff,
+	public AuthUserDTO(Long idAuthUser, String jobRole, String password, Boolean isSuperuser, Boolean isStaff,
 			Long twoFACode, Long twoFACodeExpiryTime) {
 		super();
 		this.idAuthUser = idAuthUser;
-		this.username = username;
+		this.jobRole = jobRole;
 		this.password = password;
 		this.isSuperuser = isSuperuser;
 		this.isStaff = isStaff;
@@ -34,12 +34,12 @@ public class AuthUserDTO {
 		this.idAuthUser = idAuthUser;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getJobRole() {
+		return jobRole;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setJobRole(String jobRole) {
+		this.jobRole = jobRole;
 	}
 
 	public String getPassword() {
@@ -84,9 +84,10 @@ public class AuthUserDTO {
 
 	@Override
 	public String toString() {
-		return "AuthUserDTO [idAuthUser=" + idAuthUser + ", username=" + username + ", password=" + password
+		return "AuthUserDTO [idAuthUser=" + idAuthUser + ", jobRole=" + jobRole + ", password=" + password
 				+ ", isSuperuser=" + isSuperuser + ", isStaff=" + isStaff + ", twoFACode=" + twoFACode
 				+ ", twoFACodeExpiryTime=" + twoFACodeExpiryTime + "]";
 	}
+
 
 }

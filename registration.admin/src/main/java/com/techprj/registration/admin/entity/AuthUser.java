@@ -16,7 +16,6 @@ public class AuthUser {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_Auth_User")
 	private Integer idAuthUser;
-	private String username;
 	private String password;
 	private Boolean isSuperuser;
 	private Boolean isStaff;
@@ -25,22 +24,23 @@ public class AuthUser {
 	private Long twoFACodeExpiryTime;	
 	@OneToOne(mappedBy = "authUser")
 	private Admin admin;
+	private String jobRole;
 	
 	public AuthUser() {
 		super();
 	}
 
-	public AuthUser(Integer idAuthUser, String username, String password, Boolean isSuperuser, Boolean isStaff,
-			Long twoFACode, Long twoFACodeExpiryTime, Admin admin) {
+	public AuthUser(Integer idAuthUser, String password, Boolean isSuperuser, Boolean isStaff, Long twoFACode,
+			Long twoFACodeExpiryTime, Admin admin, String jobRole) {
 		super();
 		this.idAuthUser = idAuthUser;
-		this.username = username;
 		this.password = password;
 		this.isSuperuser = isSuperuser;
 		this.isStaff = isStaff;
 		this.twoFACode = twoFACode;
 		this.twoFACodeExpiryTime = twoFACodeExpiryTime;
 		this.admin = admin;
+		this.jobRole = jobRole;
 	}
 
 	public Integer getIdAuthUser() {
@@ -49,14 +49,6 @@ public class AuthUser {
 
 	public void setIdAuthUser(Integer idAuthUser) {
 		this.idAuthUser = idAuthUser;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
@@ -107,11 +99,19 @@ public class AuthUser {
 		this.admin = admin;
 	}
 
+	public String getJobRole() {
+		return jobRole;
+	}
+
+	public void setJobRole(String jobRole) {
+		this.jobRole = jobRole;
+	}
+
 	@Override
 	public String toString() {
-		return "AuthUser [idAuthUser=" + idAuthUser + ", username=" + username + ", password=" + password
-				+ ", isSuperuser=" + isSuperuser + ", isStaff=" + isStaff + ", twoFACode=" + twoFACode
-				+ ", twoFACodeExpiryTime=" + twoFACodeExpiryTime + ", admin=" + admin + "]";
+		return "AuthUser [idAuthUser=" + idAuthUser + ", password=" + password + ", isSuperuser=" + isSuperuser
+				+ ", isStaff=" + isStaff + ", twoFACode=" + twoFACode + ", twoFACodeExpiryTime=" + twoFACodeExpiryTime
+				+ ", admin=" + admin + ", jobRole=" + jobRole + "]";
 	}
 
 }
