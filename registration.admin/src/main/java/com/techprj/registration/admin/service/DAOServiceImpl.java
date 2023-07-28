@@ -50,25 +50,19 @@ public class DAOServiceImpl implements DAOService {
 
 	@Override
 	public AdminDTO addAdmin(AdminDTO adminDTO) {
-		
-//		Admin admin = new Admin();
-//		
-//		Address address = new Address();
-//		
-//		adminRepo.save(admin);
-//		
-//		address.setAdmin(admin);
-//		
-//		addressRepo.save(address);
 
 		adminDTO.setStaffSince(LocalDate.now());
 		
-		Admin a = adminRepo.save(modelMapper.map(adminDTO, Admin.class));
-				
-		AuthUserDTO audto = modelMapper.map(a.getAuthUser(), AuthUserDTO.class);
-		AddressDTO adddto = modelMapper.map(a.getAddress(), AddressDTO.class);
+		Admin a = modelMapper.map(adminDTO, Admin.class);
+		a.setAddress(modelMapper.map(adminDTO.getAddressDTO(), Address.class));
+		a.setAuthUser(modelMapper.map(adminDTO.getAuthUserDTO(), AuthUser.class));
 		
-		AdminDTO adto = modelMapper.map(a, AdminDTO.class);
+		Admin a1 = adminRepo.save(a);
+				
+		AuthUserDTO audto = modelMapper.map(a1.getAuthUser(), AuthUserDTO.class);
+		AddressDTO adddto = modelMapper.map(a1.getAddress(), AddressDTO.class);
+		
+		AdminDTO adto = modelMapper.map(a1, AdminDTO.class);
 		
 		adto.setAuthUserDTO(audto);
 		adto.setAddressDTO(adddto);
